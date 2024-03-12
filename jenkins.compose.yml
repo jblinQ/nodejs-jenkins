@@ -1,0 +1,14 @@
+version: "3.8"
+
+volumes:
+  jenkins-data:
+    name: jenkins-data
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk11
+    container_name: jenkins-instance
+    volumes:
+      - jenkins-data:/var/jenkins_home:rw
+    ports:
+      - 127.0.0.1:8090:8080
