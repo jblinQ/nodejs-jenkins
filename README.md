@@ -13,6 +13,14 @@ k create deployment node-app --image jomoflash/express-demo:latest --replicas 2
 k expose deployment node-app --port 5000 --target-port 3000 --type NodePort  
 
 
+## Launch Jenkins
+cd jenkins  
+docker compose up -d --build  
+docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword  
+
+-- Destroy jenkins  
+docker compose down -v
+
 ## Extra
 minikube start --driver=docker --container-runtime=docker --network-plugin=cni --cni=calico  
 minikube node add --worker  
